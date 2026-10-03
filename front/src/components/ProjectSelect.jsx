@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api/index.js'
 
+const EMOJIS = {
+  ft_printf: '🖨️',
+  get_next_line: '🧵',
+  push_swap: '🔀',
+}
+
+const emojiFor = (name) => EMOJIS[name] ?? '🩺'
+
 export default function ProjectSelect({ onSelect }) {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
@@ -21,7 +29,10 @@ export default function ProjectSelect({ onSelect }) {
       <ul className="project-list">
         {projects.map((p) => (
           <li key={p.id}>
-            <button className="project" onClick={() => onSelect(p)}>{p.name}</button>
+            <button className="project" onClick={() => onSelect(p)}>
+              <span className="emoji">{emojiFor(p.name)}</span>
+              {p.name}
+            </button>
           </li>
         ))}
       </ul>

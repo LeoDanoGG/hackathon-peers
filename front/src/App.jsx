@@ -32,6 +32,8 @@ export default function App() {
       ) : (
         <ProjectSelect onSelect={setProject} />
       )}
+
+      <footer className="footer">Sanatorio 42 · Hecho en la Hackathon de 42 Madrid</footer>
     </main>
   )
 }
