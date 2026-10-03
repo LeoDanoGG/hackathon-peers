@@ -200,6 +200,8 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
 .profile-link:hover { text-decoration: underline; }
 
 .badge.on { background: #e8f2ea; color: #4a8f6a; }
+.badge.specialist { background: #d9f5f5; color: #00a5a7; font-weight: 600; }
+.badge.subtle { background: transparent; color: #a7b3ac; padding-left: 0; padding-right: 0; }
 .badge.on::before {
   content: '';
   width: 8px;
