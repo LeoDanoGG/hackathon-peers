@@ -18,6 +18,7 @@ export default function App() {
     <main className="container">
       <header className="topbar">
         <Logo />
+        <strong className="brand">Sanatorio 42</strong>
         <Avatar login={me.login} image={me.image} size={40} />
         <span>{me.login}</span>
         <AvailabilityToggle />

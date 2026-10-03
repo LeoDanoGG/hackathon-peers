@@ -23,6 +23,7 @@ export default function Login({ onLogin }) {
           <div className="step-card">
             <span className="step-emoji">🤝</span>
             <strong>3. Ve a su puesto y pide ayuda</strong>
+            <p>Nada como explicarlo cara a cara</p>
           </div>
         </div>
       </section>
