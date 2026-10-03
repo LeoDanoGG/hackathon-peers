@@ -24,6 +24,15 @@ export default function AvailabilityToggle() {
     <label className="switch-row">
       <span>De guardia</span>
       <input type="checkbox" className="switch" checked={available} onChange={toggle} disabled={saving} />
+      <span
+        className="duty-info"
+        tabIndex={0}
+        role="img"
+        aria-label="Solo aparecerás de guardia cuando estés en el campus"
+        data-tooltip="Solo aparecerás de guardia cuando estés en el campus"
+      >
+        ⓘ
+      </span>
     </label>
   )
 }

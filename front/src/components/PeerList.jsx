@@ -2,16 +2,19 @@ import { useEffect, useState } from 'react'
 import { api } from '../api/index.js'
 import Avatar from './Avatar.jsx'
 
-// 0: especialista de guardia en el cluster · 1: compañero de guardia en el cluster
-// 2: especialista de guardia en remoto · 3: compañero de guardia en remoto
-// 4: especialista fuera de turno · 5: compañero fuera de turno
+// 0: especialista de guardia · 1: paciente como tú de guardia
+// 2: especialista que no está de guardia · 3: paciente como tú que no está de guardia
+// "De guardia" siempre significa available: true y location distinta de null.
+function onDuty(peer) {
+  return peer.available && peer.location != null
+}
+
 function rank(peer) {
   const specialist = peer.status === 'finished'
-  if (peer.available && peer.location && specialist) return 0
-  if (peer.available && peer.location) return 1
-  if (peer.available && specialist) return 2
-  if (peer.available) return 3
-  return specialist ? 4 : 5
+  if (onDuty(peer) && specialist) return 0
+  if (onDuty(peer)) return 1
+  if (specialist) return 2
+  return 3
 }
 
 export default function PeerList({ project }) {
@@ -36,26 +39,22 @@ export default function PeerList({ project }) {
 
   if (loading) return <p>Cargando compañeros...</p>
 
-  const onDuty = peers.filter((p) => p.available).length
-  const onDutySpecialists = peers.filter((p) => p.available && p.status === 'finished').length
+  const onDutyCount = peers.filter(onDuty).length
+  const onDutySpecialists = peers.filter((p) => onDuty(p) && p.status === 'finished').length
   const sorted = [...peers].sort((a, b) => rank(a) - rank(b))
 
-  const byDuty = onlyOnDuty ? sorted.filter((p) => p.available) : sorted
+  const byDuty = onlyOnDuty ? sorted.filter(onDuty) : sorted
   const specialistsCount = byDuty.filter((p) => p.status === 'finished').length
   const inProgressCount = byDuty.filter((p) => p.status === 'in_progress').length
   const filtered =
     typeFilter === 'all' ? byDuty : byDuty.filter((p) => p.status === typeFilter)
 
   const badge = (peer) => {
-    if (!peer.available) return <span className="badge off">Fuera de turno</span>
-    return (
-      <span className="badge on">
-        {peer.location ? 'De guardia' : 'De guardia en remoto'}
-      </span>
-    )
+    if (!onDuty(peer)) return <span className="badge off">Fuera de turno</span>
+    return <span className="badge on">De guardia</span>
   }
 
-  const inProgressOnDuty = peers.filter((p) => p.available && p.status === 'in_progress')
+  const inProgressOnDuty = peers.filter((p) => onDuty(p) && p.status === 'in_progress')
   const meetupSpot = inProgressOnDuty.find((p) => p.location)?.location
 
   const copyLogins = async () => {
@@ -74,9 +73,9 @@ export default function PeerList({ project }) {
   return (
     <section>
       <h2>Quién te puede atender en {project.name}</h2>
-      {onDuty > 0 ? (
+      {onDutyCount > 0 ? (
         <p className="count">
-          {onDuty === 1 ? '1 de guardia' : `${onDuty} de guardia`} ahora mismo
+          {onDutyCount === 1 ? '1 de guardia' : `${onDutyCount} de guardia`} ahora mismo
           {onDutySpecialists > 0 && (
             <> ({onDutySpecialists === 1 ? '1 especialista' : `${onDutySpecialists} especialistas`})</>
           )}
@@ -133,7 +132,7 @@ export default function PeerList({ project }) {
                   </li>
                 ))}
               </ul>
-              <p>{meetupSpot ? `Quedad en ${meetupSpot}` : 'Quedad por Slack'}</p>
+              <p>Quedad en {meetupSpot}</p>
               <button className="pill" onClick={copyLogins}>
                 {copied ? '¡Copiados!' : 'Copiar logins'}
               </button>
