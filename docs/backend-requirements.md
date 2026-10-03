@@ -12,6 +12,7 @@ El formato exacto de cada endpoint está en [`docs/api.md`](api.md). Si hace fal
 - Con `VITE_USE_MOCK=true`, el front usa datos de prueba con el mismo formato que `docs/api.md`. Para usar el back real: `VITE_USE_MOCK=false`.
 - Las peticiones se hacen con `fetch` y `credentials: 'include'`: la sesión viaja en una cookie que pone el back.
 - Todas las respuestas deben ser JSON.
+- El front está publicado en https://sanatorio-42.vercel.app (se actualiza solo con cada cambio en `main`).
 
 ## Endpoints que necesita el front
 
@@ -22,16 +23,21 @@ El formato exacto de cada endpoint está en [`docs/api.md`](api.md). Si hace fal
 | GET | `/auth/me` | Al cargar la web. Devuelve el usuario logueado, o **401** si no hay sesión (así el front sabe que debe mostrar el login). |
 | POST | `/auth/logout` | Botón "Salir". Cierra la sesión. |
 | GET | `/me/projects` | Pantalla "¿Qué te duele hoy?": proyectos **en curso** del usuario. |
-| GET | `/projects/:id/peers` | Lista de compañeros de ese proyecto. |
+| GET | `/projects/:id/peers` | Lista de compañeros y especialistas de ese proyecto. |
 | PUT | `/me/availability` | Interruptor "De guardia". Body: `{ "available": true }`. |
 
 ## Requisitos de los datos
 
 - **`image`**: debe ser un texto con la URL de la foto. La API de 42 devuelve la foto como un objeto con varios tamaños: hay que extraer una URL y devolverla como texto. Si no hay foto, `null` (el front muestra la inicial).
 - **`location`**: el puesto del cluster como texto (por ejemplo `"c2r4s6"`), o `null` si la persona no está conectada en el campus.
-- **`/projects/:id/peers`**: solo personas del **campus de Madrid** que tengan ese proyecto **en curso**. No incluir al propio usuario.
+- **`/projects/:id/peers`**: solo personas del **campus de Madrid** que tengan ese proyecto **en curso** o que ya lo hayan **aprobado**. No incluir al propio usuario.
+- **`status`**: `"in_progress"` si la persona está haciendo el proyecto; `"finished"` si ya lo ha terminado y aprobado. Quienes lo han aprobado son los "especialistas": el front los destaca porque son quienes más pueden ayudar.
 - **`available`**: la API de 42 no tiene este dato. El back debe guardarlo él mismo (base de datos o, como mínimo, en memoria) y devolverlo en cada compañero.
 - **`id`** de los proyectos: el id del proyecto en la API de 42.
+
+## Especialistas: cuidado con el tamaño de la lista
+
+En los proyectos más comunes, cientos de personas pueden haberlos aprobado. Para que la lista sea útil y la API de 42 no se sature, se recomienda devolver solo los especialistas que estén **en el campus** (`location` distinta de `null`) o **de guardia** (`available: true`). Las personas con el proyecto en curso se devuelven siempre.
 
 ## Sesión, cookies y CORS
 
@@ -55,6 +61,6 @@ Sin esto, el login parecerá funcionar pero `/auth/me` devolverá siempre 401.
 3. Arrancar el front (`cd front && npm run dev`) y comprobar:
    - Sin sesión aparece el login, y "Entrar con 42" lleva a la intra.
    - Tras el login se ven tus proyectos en curso.
-   - Al elegir un proyecto se ven compañeros con foto, puesto y estado.
+   - Al elegir un proyecto se ven compañeros con foto, puesto y estado, y los especialistas destacados.
    - El interruptor "De guardia" se mantiene al recargar la página.
    - "Salir" vuelve al login.
