@@ -3,6 +3,7 @@
 > ¿Te has atascado? Pasa a consulta: aquí siempre hay alguien de guardia.
 
 Proyecto para la Hackathon de la Semana del Emprendimiento de 42 Madrid (octubre de 2026).
+🌐 **Web:** https://sanatorio-42.vercel.app
 
 ## Equipo
 
@@ -83,9 +84,11 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 | El navegador bloqueaba pegar texto en la terminal del Codespace. | Escribir las instrucciones largas en un archivo dentro del editor y pedir al asistente que lo lea. |
 | La carpeta `dist/`, generada al compilar, aparecía como pendiente de subir. | Añadirla al `.gitignore`. |
 | Al añadir el nombre del producto, la cabecera no cabía en una sola fila. | `flex-wrap: nowrap`, textos más cortos y elementos decorativos ocultos en el móvil. |
+| El Codespace tardaba varios minutos en arrancar. | Hacer los cambios pequeños desde la web de GitHub, y hacer `git pull` antes de volver a trabajar en el Codespace. |
 
 ## Memoria de trabajo
 
 | Fecha | Login | Horas | Trabajo realizado |
 |---|---|---|---|
-| 03/10 | plopez-l | 4 h | Creación del repositorio y su estructura, contrato de API, entorno en Codespaces, frontend completo con datos de prueba, diseño de Sanatorio 42 y PR #1. |
+| 03/10 | plopez-l | 3,5 h | Creación del repositorio y su estructura, contrato de API, entorno en Codespaces, frontend completo con datos de prueba, diseño de Sanatorio 42 y PR #1. |
+| 03/10 | plopez-l | 2 h | README, requisitos del backend, publicación en Vercel, especialistas, filtros por tipo, terapia de grupo y regla de guardia en el campus.

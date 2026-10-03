@@ -35,9 +35,13 @@ El formato exacto de cada endpoint está en [`docs/api.md`](api.md). Si hace fal
 - **`available`**: la API de 42 no tiene este dato. El back debe guardarlo él mismo (base de datos o, como mínimo, en memoria) y devolverlo en cada compañero.
 - **`id`** de los proyectos: el id del proyecto en la API de 42.
 
+## Regla de guardia
+
+En Sanatorio 42 la ayuda es cara a cara: una persona solo cuenta como "de guardia" si tiene `available: true` **y** está en el campus (`location` distinta de `null`). Esta regla la aplica el front, así que el back solo tiene que devolver `available` y `location` tal cual.
+
 ## Especialistas: cuidado con el tamaño de la lista
 
-En los proyectos más comunes, cientos de personas pueden haberlos aprobado. Para que la lista sea útil y la API de 42 no se sature, se recomienda devolver solo los especialistas que estén **en el campus** (`location` distinta de `null`) o **de guardia** (`available: true`). Las personas con el proyecto en curso se devuelven siempre.
+En los proyectos más comunes, cientos de personas pueden haberlos aprobado. Para que la lista sea útil y la API de 42 no se sature, se recomienda devolver solo los especialistas que estén **en el campus** (`location` distinta de `null`). Las personas con el proyecto en curso se devuelven siempre.
 
 ## Sesión, cookies y CORS
 
