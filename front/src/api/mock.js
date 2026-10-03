@@ -11,17 +11,26 @@ const PROJECTS = [
 
 const PEERS = {
   1314: [
-    { login: 'jdoe', image: 'https://cdn.intra.42.fr/users/jdoe.jpg', location: 'c2r4s6', available: true },
-    { login: 'mgarcia', image: 'https://cdn.intra.42.fr/users/mgarcia.jpg', location: 'c1r2s1', available: false },
-    { login: 'anavarro', image: 'https://cdn.intra.42.fr/users/anavarro.jpg', location: null, available: true },
+    { login: 'jdoe', image: 'https://cdn.intra.42.fr/users/jdoe.jpg', location: 'c2r4s6', available: true, status: 'finished' },
+    { login: 'mgarcia', image: 'https://cdn.intra.42.fr/users/mgarcia.jpg', location: 'c1r2s1', available: false, status: 'in_progress' },
+    { login: 'anavarro', image: 'https://cdn.intra.42.fr/users/anavarro.jpg', location: null, available: true, status: 'in_progress' },
+    { login: 'llorente', image: 'https://cdn.intra.42.fr/users/llorente.jpg', location: 'c5r3s2', available: true, status: 'in_progress' },
+    { login: 'rtoledo', image: 'https://cdn.intra.42.fr/users/rtoledo.jpg', location: null, available: false, status: 'finished' },
   ],
   1337: [
-    { login: 'lruiz', image: 'https://cdn.intra.42.fr/users/lruiz.jpg', location: 'c3r1s9', available: true },
-    { login: 'jdoe', image: 'https://cdn.intra.42.fr/users/jdoe.jpg', location: null, available: false },
+    { login: 'lruiz', image: 'https://cdn.intra.42.fr/users/lruiz.jpg', location: 'c3r1s9', available: true, status: 'in_progress' },
+    { login: 'jdoe', image: 'https://cdn.intra.42.fr/users/jdoe.jpg', location: null, available: false, status: 'in_progress' },
+    { login: 'gmoreno', image: 'https://cdn.intra.42.fr/users/gmoreno.jpg', location: 'c1r5s7', available: true, status: 'in_progress' },
+    { login: 'mgarcia', image: 'https://cdn.intra.42.fr/users/mgarcia.jpg', location: 'c2r7s3', available: true, status: 'finished' },
+    { login: 'ksayago', image: 'https://cdn.intra.42.fr/users/ksayago.jpg', location: null, available: true, status: 'finished' },
+    { login: 'vserrano', image: 'https://cdn.intra.42.fr/users/vserrano.jpg', location: null, available: false, status: 'finished' },
   ],
   1420: [
-    { login: 'mgarcia', image: 'https://cdn.intra.42.fr/users/mgarcia.jpg', location: 'c2r7s3', available: true },
-    { login: 'cfernandez', image: 'https://cdn.intra.42.fr/users/cfernandez.jpg', location: 'c4r2s8', available: true },
+    { login: 'mgarcia', image: 'https://cdn.intra.42.fr/users/mgarcia.jpg', location: 'c2r7s3', available: true, status: 'in_progress' },
+    { login: 'tvega', image: 'https://cdn.intra.42.fr/users/tvega.jpg', location: null, available: true, status: 'in_progress' },
+    { login: 'cfernandez', image: 'https://cdn.intra.42.fr/users/cfernandez.jpg', location: 'c4r2s8', available: true, status: 'finished' },
+    { login: 'iturralde', image: 'https://cdn.intra.42.fr/users/iturralde.jpg', location: null, available: true, status: 'finished' },
+    { login: 'dpena', image: 'https://cdn.intra.42.fr/users/dpena.jpg', location: null, available: false, status: 'finished' },
   ],
 }
 

@@ -15,13 +15,17 @@ nunca ve el client secret. La sesión va en una cookie.
 GET /me/projects
 [{ "id": 1314, "name": "ft_printf" }]
 
-## Gente en el mismo proyecto (campus Madrid, en curso)
+## Gente del proyecto (campus Madrid)
 GET /projects/:id/peers
+
+Devuelve a quienes tienen el proyecto en curso y a quienes ya lo han aprobado ("especialistas").
+
 [{
   "login": "jdoe",
   "image": "https://...",
-  "location": "c2r4s6",   // null si no está en el cluster
-  "available": true
+  "location": "c2r4s6",     // null si no está en el cluster
+  "available": true,
+  "status": "in_progress"   // "in_progress": lo está haciendo; "finished": ya lo aprobó (especialista)
 }]
 
 ## Marcarme como disponible
