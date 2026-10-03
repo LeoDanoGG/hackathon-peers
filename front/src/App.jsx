@@ -23,7 +23,7 @@ export default function App() {
 
       {project ? (
         <>
-          <button className="link" onClick={() => setProject(null)}>← Cambiar de proyecto</button>
+          <button className="link" onClick={() => setProject(null)}>← Ver otros proyectos</button>
           <PeerList project={project} />
         </>
       ) : (

@@ -16,8 +16,8 @@ export default function ProjectSelect({ onSelect }) {
 
   return (
     <section>
-      <h2>Mis proyectos en curso</h2>
-      {projects.length === 0 && <p>No tienes proyectos en curso.</p>}
+      <h2>¿Con qué proyecto necesitas compañía hoy?</h2>
+      {projects.length === 0 && <p>No tienes proyectos en curso. ¡Buen momento para descansar!</p>}
       <ul className="project-list">
         {projects.map((p) => (
           <li key={p.id}>

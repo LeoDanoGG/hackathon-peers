@@ -17,8 +17,8 @@ export default function PeerList({ project }) {
 
   return (
     <section>
-      <h2>{project.name} — compañeros</h2>
-      {peers.length === 0 && <p>Nadie más está con este proyecto ahora.</p>}
+      <h2>Personas dispuestas a echarte una mano con {project.name}</h2>
+      {peers.length === 0 && <p>Ahora mismo no hay nadie con este proyecto... pero puedes volver a preguntar más tarde.</p>}
       <ul className="peer-list">
         {peers.map((peer) => (
           <li key={peer.login} className="peer-card">
@@ -28,7 +28,7 @@ export default function PeerList({ project }) {
               <p>{peer.location ? `Puesto: ${peer.location}` : 'No está en el cluster'}</p>
             </div>
             <span className={peer.available ? 'badge on' : 'badge off'}>
-              {peer.available ? 'Disponible' : 'Ocupado'}
+              {peer.available ? 'Disponible' : 'Ahora no disponible'}
             </span>
           </li>
         ))}
