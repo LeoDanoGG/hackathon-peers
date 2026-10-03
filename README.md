@@ -1,1 +1,92 @@
 # hackathon-peers
+# Sanatorio 42 🩺
+
+> ¿Te has atascado? Pasa a consulta: aquí siempre hay alguien de guardia.
+
+Proyecto para la Hackathon de la Semana del Emprendimiento de 42 Madrid (octubre de 2026).
+
+## Equipo
+
+| Login | Responsabilidades |
+|---|---|
+| albrodri | Backend |
+| legomez | _Pendiente_ |
+| plopez-l | Frontend: estructura del repositorio, diseño e interfaz |
+
+## El dolor
+
+En 42 aprendemos peer to peer, pero cuando te atascas en un proyecto no es fácil saber quién lo está haciendo ahora mismo, quién está en el campus y quién tiene tiempo para echarte una mano. Acabas preguntando en Slack o dando vueltas por los clusters.
+
+## La solución
+
+Sanatorio 42 es una web en la que, con tu cuenta de 42:
+
+- Eliges el proyecto que se te resiste ("¿Qué te duele hoy?").
+- Ves qué compañeros lo están haciendo, en qué puesto del cluster están y si están "de guardia", es decir, disponibles para ayudar.
+- Te puedes poner de guardia tú para ayudar a otros.
+
+Los datos de proyectos y ubicaciones se obtienen de la API de 42.
+
+## Metodología de ideación y prototipado
+
+_Pendiente de completar en equipo._
+
+## Gestión del proyecto
+
+- Repositorio en GitHub con una rama por área (`front`, `back`) y `main` como versión estable.
+- Los cambios llegan a `main` mediante pull requests.
+- El contrato entre front y back está en `docs/api.md`, para que ambas partes trabajen en paralelo. Mientras el back no está listo, el front usa datos de prueba (mock) con el mismo formato.
+- _Pendiente: herramientas de organización y reparto de tareas._
+
+## Arquitectura
+
+- `front/`: React + Vite.
+- `back/`: _Pendiente_. Gestiona el login con la API de 42 (OAuth), de modo que el client secret nunca llega al navegador.
+- `docs/api.md`: contrato de endpoints entre front y back.
+
+## Cómo levantar el proyecto
+
+### Frontend
+
+```bash
+cd front
+cp .env.example .env
+npm install
+npm run dev
+```
+
+Variables de `front/.env`:
+
+- `VITE_USE_MOCK`: con `true` usa datos de prueba; con `false`, el back real.
+- `VITE_MOCK_LOGGED_IN`: en modo mock, con `true` entra directamente sin pasar por el login.
+- `VITE_API_URL`: URL del back.
+
+### Backend
+
+_Pendiente._
+
+## Herramientas
+
+- opencode, asistente de programación con IA, para generar y modificar el frontend.
+- GitHub Codespaces como entorno de desarrollo en la nube.
+
+## Seguridad
+
+No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.gitignore`, y las variables necesarias se documentan en los `.env.example`.
+
+## Registro de problemas técnicos
+
+| Problema | Solución |
+|---|---|
+| Node.js y opencode no arrancaban en un Mac con macOS 10.15, porque sus versiones actuales necesitan macOS 13 o posterior. | Desarrollo en GitHub Codespaces, un entorno en la nube con un sistema actualizado. |
+| La web de Node.js redirigía la descarga del instalador a su blog. | Descarga directa del instalador con `curl` desde la terminal. |
+| La traducción automática del navegador traducía los nombres de los archivos en el editor (`back` aparecía como "De vuelta"). | Desactivar la traducción en el dominio del Codespace. |
+| El navegador bloqueaba pegar texto en la terminal del Codespace. | Escribir las instrucciones largas en un archivo dentro del editor y pedir al asistente que lo lea. |
+| La carpeta `dist/`, generada al compilar, aparecía como pendiente de subir. | Añadirla al `.gitignore`. |
+| Al añadir el nombre del producto, la cabecera no cabía en una sola fila. | `flex-wrap: nowrap`, textos más cortos y elementos decorativos ocultos en el móvil. |
+
+## Memoria de trabajo
+
+| Fecha | Login | Horas | Trabajo realizado |
+|---|---|---|---|
+| 03/10 | plopez-l | 4 h | Creación del repositorio y su estructura, contrato de API, entorno en Codespaces, frontend completo con datos de prueba, diseño de Sanatorio 42 y PR #1. |
