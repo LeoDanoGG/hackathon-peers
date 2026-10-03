@@ -22,7 +22,7 @@ export default function AvailabilityToggle() {
 
   return (
     <label className="switch-row">
-      <span>Estoy de guardia para ayudar</span>
+      <span>De guardia</span>
       <input type="checkbox" className="switch" checked={available} onChange={toggle} disabled={saving} />
     </label>
   )
