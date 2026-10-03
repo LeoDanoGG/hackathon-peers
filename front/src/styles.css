@@ -200,6 +200,31 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
 .profile-link:hover { text-decoration: underline; }
 
 .badge.on { background: #e8f2ea; color: #4a8f6a; }
+.group-therapy {
+  background: #e6f7f7;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  color: #2a6f70;
+}
+.group-therapy-list { list-style: none; padding: 0; margin: 0.75rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.group-therapy-list li { display: flex; align-items: center; gap: 0.5rem; }
+
+.filters { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0; }
+.filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.pill {
+  border: 1px solid #d8ded9;
+  background: #fff;
+  color: #5b6b62;
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.pill.active { background: #00babc; border-color: #00babc; color: #fff; }
+.duty-check { font-size: 0.85rem; color: #5b6b62; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+
 .badge.specialist { background: #d9f5f5; color: #00a5a7; font-weight: 600; }
 .badge.subtle { background: transparent; color: #a7b3ac; padding-left: 0; padding-right: 0; }
 .badge.on::before {
