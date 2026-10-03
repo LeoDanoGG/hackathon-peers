@@ -1,4 +1,3 @@
-# hackathon-peers
 # Sanatorio 42 🩺
 
 > ¿Te has atascado? Pasa a consulta: aquí siempre hay alguien de guardia.
