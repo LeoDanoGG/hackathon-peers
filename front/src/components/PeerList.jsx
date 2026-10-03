@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api/index.js'
+import Avatar from './Avatar.jsx'
 
 export default function PeerList({ project }) {
   const [peers, setPeers] = useState([])
@@ -17,18 +18,19 @@ export default function PeerList({ project }) {
 
   return (
     <section>
-      <h2>Personas dispuestas a echarte una mano con {project.name}</h2>
-      {peers.length === 0 && <p>Ahora mismo no hay nadie con este proyecto... pero puedes volver a preguntar más tarde.</p>}
+      <h2>Compañeros de guardia en {project.name}</h2>
+      <p className="count">{peers.filter((p) => p.available).length} compañeros de guardia ahora mismo</p>
+      {peers.length === 0 && <p>Ahora mismo no hay nadie en este turno... pero puedes volver a preguntar más tarde.</p>}
       <ul className="peer-list">
         {peers.map((peer) => (
           <li key={peer.login} className="peer-card">
-            <img src={peer.image} alt={peer.login} />
+            <Avatar login={peer.login} image={peer.image} />
             <div>
               <strong>{peer.login}</strong>
-              <p>{peer.location ? `Puesto: ${peer.location}` : 'No está en el cluster'}</p>
+              <p>{peer.location ? `Te atiende en ${peer.location}` : 'Fuera del centro'}</p>
             </div>
             <span className={peer.available ? 'badge on' : 'badge off'}>
-              {peer.available ? 'Disponible' : 'Ahora no disponible'}
+              {peer.available ? 'De guardia' : 'Fuera de turno'}
             </span>
           </li>
         ))}

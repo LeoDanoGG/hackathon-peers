@@ -4,6 +4,8 @@ import Login from './components/Login.jsx'
 import ProjectSelect from './components/ProjectSelect.jsx'
 import PeerList from './components/PeerList.jsx'
 import AvailabilityToggle from './components/AvailabilityToggle.jsx'
+import Avatar from './components/Avatar.jsx'
+import Logo from './components/Logo.jsx'
 
 export default function App() {
   const { me, loading, login, logout } = useAuth()
@@ -15,7 +17,8 @@ export default function App() {
   return (
     <main className="container">
       <header className="topbar">
-        <img src={me.image} alt={me.login} className="avatar" />
+        <Logo />
+        <Avatar login={me.login} image={me.image} size={40} />
         <span>{me.login}</span>
         <AvailabilityToggle />
         <button onClick={logout}>Salir</button>
@@ -23,7 +26,7 @@ export default function App() {
 
       {project ? (
         <>
-          <button className="link" onClick={() => setProject(null)}>← Ver otros proyectos</button>
+          <button className="link" onClick={() => setProject(null)}>← Volver a la sala de espera</button>
           <PeerList project={project} />
         </>
       ) : (
