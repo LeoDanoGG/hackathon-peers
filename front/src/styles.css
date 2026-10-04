@@ -64,7 +64,7 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
 
 .topbar {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.6rem;
   background: #fff;
@@ -76,8 +76,15 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
 
 .topbar button { padding: 0.35rem 0.8rem; font-size: 0.85rem; white-space: nowrap; }
 .topbar .switch-row { margin-left: auto; white-space: nowrap; font-size: 0.9rem; }
+.topbar-brand, .topbar-user { display: flex; align-items: center; gap: 0.6rem; min-width: 0; }
 .topbar .brand { white-space: nowrap; }
-.topbar > span { white-space: nowrap; }
+
+.user-login {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 14ch;
+}
 
 .avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
 
@@ -341,10 +348,18 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
 .duty-info:focus-visible::after { opacity: 1; }
 
 @media (max-width: 560px) {
+  .container { padding: 1rem 0.75rem; }
   .peer-list { grid-template-columns: 1fr; }
-  .switch-row { margin-left: 0; width: 100%; justify-content: space-between; }
   .topbar { gap: 0.5rem; padding: 0.5rem 0.7rem; }
+  .topbar .brand, .topbar .logo .ekg { display: none; }
+  .topbar-user { flex: 1; }
+  /* toggle with own row */
+  .switch-row { order: 3; width: 100%; margin-left: 0; justify-content: space-between; }
+  /* less blur and spots smaller: lighter on mobiles */
+  body::before { width: 400px; height: 400px; }
+  body::after { width: 420px; height: 420px; }
+}
+
+@media (max-width: 700px) {
   .topbar .logo .ekg { display: none; }
-  .topbar .brand { display: none; }
-  .switch-row { width: auto; margin-left: auto; }
 }

@@ -10,7 +10,7 @@ Proyecto para la Hackathon de la Semana del Emprendimiento de 42 Madrid (octubre
 | Login | Responsabilidades |
 |---|---|
 | albrodri | Backend |
-| legomez | _Pendiente_ |
+| legomez | frontend: revisión y cambios en UI |
 | plopez-l | Frontend: estructura del repositorio, diseño e interfaz |
 
 ## El dolor
@@ -91,4 +91,5 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 | Fecha | Login | Horas | Trabajo realizado |
 |---|---|---|---|
 | 03/10 | plopez-l | 3,5 h | Creación del repositorio y su estructura, contrato de API, entorno en Codespaces, frontend completo con datos de prueba, diseño de Sanatorio 42 y PR #1. |
-| 03/10 | plopez-l | 2 h | README, requisitos del backend, publicación en Vercel, especialistas, filtros por tipo, terapia de grupo y regla de guardia en el campus.
+| 03/10 | plopez-l | 2 h | README, requisitos del backend, publicación en Vercel, especialistas, filtros por tipo, terapia de grupo y regla de guardia en el campus. |
+| 04/10 | legomez | 1h |  |

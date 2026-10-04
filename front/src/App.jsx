@@ -17,10 +17,14 @@ export default function App() {
   return (
     <main className="container">
       <header className="topbar">
-        <Logo />
-        <strong className="brand">Sanatorio 42</strong>
-        <Avatar login={me.login} image={me.image} size={40} />
-        <span>{me.login}</span>
+        <div className="topbar-brand">
+          <Logo />
+          <strong className="brand">Sanatorio 42</strong>
+        </div>
+        <div className="topbar-user">
+          <Avatar login={me.login} image={me.image} size={40} />
+          <span className="user-login">{me.login}</span>
+        </div>
         <AvailabilityToggle />
         <button onClick={logout}>Salir</button>
       </header>
