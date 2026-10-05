@@ -85,6 +85,7 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 | La carpeta `dist/`, generada al compilar, aparecía como pendiente de subir. | Añadirla al `.gitignore`. |
 | Al añadir el nombre del producto, la cabecera no cabía en una sola fila. | `flex-wrap: nowrap`, textos más cortos y elementos decorativos ocultos en el móvil. |
 | El Codespace tardaba varios minutos en arrancar. | Hacer los cambios pequeños desde la web de GitHub, y hacer `git pull` antes de volver a trabajar en el Codespace. |
+| En moviles se colapsaban varias herramientas de la interfaz. | Se ha implementado `topbar-brand` y `topbar-user` junto a `user-login` para controlar que todo sea visible en dos filas. |
 
 ## Memoria de trabajo
 
@@ -92,4 +93,4 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 |---|---|---|---|
 | 03/10 | plopez-l | 3,5 h | Creación del repositorio y su estructura, contrato de API, entorno en Codespaces, frontend completo con datos de prueba, diseño de Sanatorio 42 y PR #1. |
 | 03/10 | plopez-l | 2 h | README, requisitos del backend, publicación en Vercel, especialistas, filtros por tipo, terapia de grupo y regla de guardia en el campus. |
-| 04/10 | legomez | 1h |  |
+| 04/10 | legomez | 1h | Configuración de interfaz y ajustes en el css para hacerla responsiva para móviles o pantallas pequeñas. |
