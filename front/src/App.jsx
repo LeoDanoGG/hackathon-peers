@@ -31,7 +31,7 @@ export default function App() {
 
       {project ? (
         <>
-          <button className="link" onClick={() => setProject(null)}>← Volver a la sala de espera</button>
+          <button className="back-btn" onClick={() => setProject(null)}>← Volver a la sala de espera</button>
           <PeerList project={project} />
         </>
       ) : (
