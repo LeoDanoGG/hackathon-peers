@@ -87,7 +87,7 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 | El Codespace tardaba varios minutos en arrancar. | Hacer los cambios pequeños desde la web de GitHub, y hacer `git pull` antes de volver a trabajar en el Codespace. |
 | En moviles se colapsaban varias herramientas de la interfaz. | Se ha implementado `topbar-brand` y `topbar-user` junto a `user-login` para controlar que todo sea visible en dos filas. |
 | El botón para volver a la ventana principal no es intuitivo. | Se ha implementado la clase `back-btn`, así como su `:hover` y `:focus-visible` para controlar su visibilidad. |
-| El título se sentía muy simple. | Se ha implemenado el login del usuario en el ítulo cuando inicia sesión. |
+| El título se sentía muy simple. | Se ha implemenado el login del usuario en el título cuando inicia sesión. |
 
 ## Memoria de trabajo
 
