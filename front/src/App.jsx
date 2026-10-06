@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from './hooks/useAuth.js'
 import Login from './components/Login.jsx'
 import ProjectSelect from './components/ProjectSelect.jsx'
@@ -7,9 +7,15 @@ import AvailabilityToggle from './components/AvailabilityToggle.jsx'
 import Avatar from './components/Avatar.jsx'
 import Logo from './components/Logo.jsx'
 
+const BASE_TITLE = 'Sanatorio 42'
+
 export default function App() {
   const { me, loading, login, logout } = useAuth()
   const [project, setProject] = useState(null)
+
+  useEffect(() => {
+    document.title = me?.login ? `${BASE_TITLE} - ${me.login}` : BASE_TITLE
+  }, [me?.login])
 
   if (loading) return <p className="center">Cargando...</p>
   if (!me) return <Login onLogin={login} />
@@ -19,7 +25,6 @@ export default function App() {
       <header className="topbar">
         <div className="topbar-brand">
           <Logo />
-          <strong className="brand">Sanatorio 42</strong>
         </div>
         <div className="topbar-user">
           <Avatar login={me.login} image={me.image} size={40} />
@@ -31,7 +36,7 @@ export default function App() {
 
       {project ? (
         <>
-          <button className="back-btn" onClick={() => setProject(null)}>← Volver a la sala de espera</button>
+          <button className="back-btn" onClick={() => setProject(null)}>Volver a la sala de espera</button>
           <PeerList project={project} />
         </>
       ) : (
