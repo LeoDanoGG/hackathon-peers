@@ -159,7 +159,7 @@ Respuesta real de la app del hackatón:
   "scopes": ["public"],
   "expires_in_seconds": 6588,
   "application": {
-    "uid": "u-s4t2ud-995431de9983dffdb791636f1ece43dc1338a278cae80ddf7b4647b7b05d496f"
+    "uid": "ejemplo-con-iuqewhrfhjiwqbrdfiouyeqhgrftjknqrfe"
   },
   "created_at": 1791045073
 }
