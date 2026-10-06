@@ -148,6 +148,10 @@ export function createOAuthClient(options: OAuthClientOptions) {
 
     if (!response.ok) {
       const raw = await response.text()
+      process.stderr.write(
+        `[oauth] /oauth/token respondió ${response.status} ` +
+          `(server: ${response.headers.get('server') ?? '-'}): ${raw.slice(0, 300)}\n`,
+      ) 
 
       throw new ApiError(`El canje del código falló con ${response.status}`, response.status, {
         endpoint: '/oauth/token',
