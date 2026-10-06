@@ -87,6 +87,7 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 | El Codespace tardaba varios minutos en arrancar. | Hacer los cambios pequeños desde la web de GitHub, y hacer `git pull` antes de volver a trabajar en el Codespace. |
 | En moviles se colapsaban varias herramientas de la interfaz. | Se ha implementado `topbar-brand` y `topbar-user` junto a `user-login` para controlar que todo sea visible en dos filas. |
 | El botón para volver a la ventana principal no es intuitivo. | Se ha implementado la clase `back-btn`, así como su `:hover` y `:focus-visible` para controlar su visibilidad. |
+| El título se sentía muy simple. | Se ha implemenado el login del usuario en el ítulo cuando inicia sesión. |
 
 ## Memoria de trabajo
 
@@ -96,3 +97,4 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 | 03/10 | plopez-l | 2 h | README, requisitos del backend, publicación en Vercel, especialistas, filtros por tipo, terapia de grupo y regla de guardia en el campus. |
 | 04/10 | legomez | 1h | Configuración de interfaz y ajustes en el css para hacerla responsiva para móviles o pantallas pequeñas. |
 | 05/10 | legomez | 1h | Configuración del botón de "Volver a la sala de espera" para hacerlo más visible |
+| 06/10 | legomez | 1h | Añadido el login del usuario en el título |
