@@ -63,11 +63,16 @@ export async function migrate(db: Db): Promise<number[]> {
 
   const applied: number[] = []
   for (const migration of pending) {
-    // `PRAGMA` no admite parámetros vinculados: hay que interpolar. El valor es
-    // un entero de este mismo array, así que no hay inyección posible.
+    // La versión se guarda en una tabla y no en `PRAGMA user_version`: Turso
+    // (la base remota de producción) rechaza escribir ese PRAGMA con
+    // `SQL_PARSE_ERROR: SQL not allowed statement`.
     await db.batch([
       ...migration.statements,
-      `PRAGMA user_version = ${migration.version}`,
+      CREATE_SCHEMA_VERSION,
+      {
+        sql: 'INSERT INTO schema_version (id, version) VALUES (1, ?) ON CONFLICT(id) DO UPDATE SET version = excluded.version',
+        args: [migration.version],
+      },
     ])
     applied.push(migration.version)
   }
@@ -75,8 +80,26 @@ export async function migrate(db: Db): Promise<number[]> {
   return applied
 }
 
-/** Versión del esquema actualmente aplicada. */
+/** Tabla de una sola fila con la versión del esquema. */
+const CREATE_SCHEMA_VERSION =
+  'CREATE TABLE IF NOT EXISTS schema_version (id INTEGER PRIMARY KEY CHECK (id = 1), version INTEGER NOT NULL)'
+
+/**
+ * Versión del esquema actualmente aplicada.
+ *
+ * Se lee de la tabla `schema_version`. Si no existe (una base creada antes de
+ * este cambio), se cae a `PRAGMA user_version`, que en local sí se escribía.
+ */
 export async function schemaVersion(db: Db): Promise<number> {
+  const table = await db.execute(
+    "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'schema_version'",
+  )
+  if (table.rows.length > 0) {
+    const result = await db.execute('SELECT version FROM schema_version WHERE id = 1')
+    const row = result.rows[0]
+    if (row !== undefined) return Number(row.version ?? 0)
+  }
+
   const result = await db.execute('PRAGMA user_version')
   const row = result.rows[0]
 

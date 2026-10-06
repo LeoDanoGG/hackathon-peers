@@ -19,7 +19,7 @@ import { textOf } from '../helpers/rows.js'
 /** Nombres de las tablas del esquema actual, sin las internas de SQLite. */
 async function tableNames(db: Db): Promise<string[]> {
   const result = await db.execute(
-    "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'",
+    "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' AND name != 'schema_version'",
   )
   return result.rows.map((row) => textOf(row, 'name'))
 }
@@ -67,7 +67,7 @@ describe('migraciones', () => {
     const db = await openDatabase({ url: 'file::memory:' })
 
     // Simula una base desplegada con el esquema viejo, que llegaba a la versión 3.
-    await db.execute('PRAGMA user_version = 3')
+    await db.execute('UPDATE schema_version SET version = 3 WHERE id = 1')
 
     await expect(assertSchemaIsCurrent(db)).rejects.toThrow(/está en la versión 3/)
   })
@@ -128,7 +128,7 @@ describe('migraciones', () => {
     const db = await openDatabase({ url: 'file::memory:' })
 
     // Una base de un despliegue futuro: el código viejo no debe escribir encima.
-    await db.execute('PRAGMA user_version = 99')
+    await db.execute('UPDATE schema_version SET version = 99 WHERE id = 1')
 
     await expect(assertSchemaIsCurrent(db)).rejects.toThrow(/está en la versión 99/)
 
