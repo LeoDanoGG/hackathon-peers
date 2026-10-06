@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from './hooks/useAuth.js'
 import Login from './components/Login.jsx'
 import ProjectSelect from './components/ProjectSelect.jsx'
@@ -7,6 +7,7 @@ import AvailabilityToggle from './components/AvailabilityToggle.jsx'
 import Avatar from './components/Avatar.jsx'
 import Logo from './components/Logo.jsx'
 
+const BASE_TITLE = 'Sanatorio 42'
 /**
  * Lee el error que manda 42 de vuelta al front.
  *
@@ -39,6 +40,10 @@ export default function App() {
   const [project, setProject] = useState(null)
   const [oauthError] = useState(leerErrorOAuth)
 
+  useEffect(() => {
+    document.title = me?.login ? `${BASE_TITLE} - ${me.login}` : BASE_TITLE
+  }, [me?.login])
+
   if (loading) return <p className="center">Cargando...</p>
 
   // No es que no haya sesión: es que no se ha podido preguntar. Mostrar el login
@@ -61,17 +66,20 @@ export default function App() {
   return (
     <main className="container">
       <header className="topbar">
-        <Logo />
-        <strong className="brand">Sanatorio 42</strong>
-        <Avatar login={me.login} image={me.image} size={40} />
-        <span className="login">{me.login}</span>
+        <div className="topbar-brand">
+          <Logo />
+        </div>
+        <div className="topbar-user">
+          <Avatar login={me.login} image={me.image} size={40} />
+          <span className="user-login">{me.login}</span>
+        </div>
         <AvailabilityToggle />
         <button onClick={logout}>Salir</button>
       </header>
 
       {project ? (
         <>
-          <button className="link" onClick={() => setProject(null)}>← Volver a la sala de espera</button>
+          <button className="back-btn" onClick={() => setProject(null)}>Volver a la sala de espera</button>
           <PeerList project={project} />
         </>
       ) : (
