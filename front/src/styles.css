@@ -271,7 +271,7 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
 }
 
 /* Logo */
-.logo { display: flex; align-items: center; gap: 0.6rem; }
+.logo { display: flex; align-items: center; gap: 0.6rem; pointer-events: none; user-select: none; }
 
 .brand { font-size: 1.1rem; }
 
@@ -374,9 +374,7 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
   .topbar { gap: 0.5rem; padding: 0.5rem 0.7rem; }
   .topbar .brand, .topbar .logo .ekg { display: none; }
   .topbar-user { flex: 1; }
-  /* toggle with own row */
-  .switch-row { order: 3; width: 100%; margin-left: 0; justify-content: space-between; }
-  /* less blur and spots smaller: lighter on mobiles */
+  .switch-row { order: 3; width: 100%; margin-left: 0; justify-content: center; }
   body::before { width: 400px; height: 400px; }
   body::after { width: 420px; height: 420px; }
 }
