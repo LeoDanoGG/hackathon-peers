@@ -98,3 +98,6 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 | 04/10 | legomez | 1h | Configuración de interfaz y ajustes en el css para hacerla responsiva para móviles o pantallas pequeñas. |
 | 05/10 | legomez | 1h | Configuración del botón de "Volver a la sala de espera" para hacerlo más visible |
 | 06/10 | legomez | 1h | Añadido el login del usuario en el título |
+| 03/10 | plopez-l | 2 h | README, requisitos del backend, publicación en Vercel, especialistas, filtros por tipo, terapia de grupo y regla de guardia en el campus.
+| 04/10 | plopez-l | 1 h | AGENTS, Relevo front.
+| 05/10 | plopez-l | 3 h | Conexió del front con el backk en producción, configuración de Vercel, Turso y la app de la intra, arreglo de las migraciones para Turso.

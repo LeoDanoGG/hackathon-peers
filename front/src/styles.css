@@ -371,12 +371,71 @@ button.link { background: none; padding: 0; color: #00babc; margin-bottom: 1.25r
 @media (max-width: 560px) {
   .container { padding: 1rem 0.75rem; }
   .peer-list { grid-template-columns: 1fr; }
-  .topbar { gap: 0.5rem; padding: 0.5rem 0.7rem; }
-  .topbar .brand, .topbar .logo .ekg { display: none; }
-  .topbar-user { flex: 1; }
-  .switch-row { order: 3; width: 100%; margin-left: 0; justify-content: center; }
-  body::before { width: 400px; height: 400px; }
-  body::after { width: 420px; height: 420px; }
+  .switch-row { width: auto; margin-left: auto; }
+
+  /* La cabecera tiene que seguir cabiendo en una sola fila: se estrecha el
+     login con puntos suspensivos (no se corta el texto a lo bruto) y se
+     encogen avatar, interruptor y botón. */
+  .topbar { gap: 0.35rem; padding: 0.45rem 0.6rem; }
+  .topbar .logo .ekg { display: none; }
+  .topbar .brand { display: none; }
+  .topbar .login {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .topbar .avatar, .topbar .avatar-fallback { width: 32px !important; height: 32px !important; }
+  .topbar button { padding: 0.3rem 0.55rem; font-size: 0.8rem; }
+  .topbar .switch-row { font-size: 0.8rem; gap: 0.35rem; white-space: nowrap; }
+}
+
+/* ── Estados de carga, error y aviso ─────────────────────────────────────────
+   Se usan en el login (cortes y errores de 42), en la lista de proyectos y en
+   la de compañeros. El error no va en rojo vivo: es un tono apagado que no pelea
+   con la paleta crema y menta de la web.
+   ──────────────────────────────────────────────────────────────────────────── */
+.estado {
+  background: #f2f7f4;
+  color: #55635c;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  line-height: 1.5;
+}
+
+.estado.error {
+  background: #fbf1ee;
+  color: #8f4a41;
+}
+
+.estado.aviso {
+  background: #eaf7f7;
+  color: #0a7d7e;
+}
+
+/* Cuánta gente puede atender: más pequeñito que el titular, pero visible. */
+.total {
+  color: #8a9490;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.total.aviso { color: #0a7d7e; }
+
+/* El aviso de "no se ha podido guardar" aparece colgando del interruptor, no
+   dentro de la fila: la cabecera tiene que seguir en una sola línea. */
+.switch-wrap { position: relative; }
+.topbar .switch-wrap { margin-left: auto; }
+
+.switch-aviso {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 10;
 }
 
 @media (max-width: 700px) {
