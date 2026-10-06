@@ -92,3 +92,5 @@ No hay claves ni secretos en el repositorio: los archivos `.env` están en el `.
 |---|---|---|---|
 | 03/10 | plopez-l | 3,5 h | Creación del repositorio y su estructura, contrato de API, entorno en Codespaces, frontend completo con datos de prueba, diseño de Sanatorio 42 y PR #1. |
 | 03/10 | plopez-l | 2 h | README, requisitos del backend, publicación en Vercel, especialistas, filtros por tipo, terapia de grupo y regla de guardia en el campus.
+| 04/10 | plopez-l | 1 h | AGENTS, Relevo front.
+| 05/10 | plopez-l | 3 h | Conexió del front con el backk en producción, configuración de Vercel, Turso y la app de la intra, arreglo de las migraciones para Turso.
