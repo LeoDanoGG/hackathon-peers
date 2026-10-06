@@ -10,7 +10,7 @@ Proyecto para la Hackathon de la Semana del Emprendimiento de 42 Madrid (octubre
 | Login | Responsabilidades |
 |---|---|
 | albrodri | Backend |
-| legomez | frontend: UI responsive |
+| legomez | frontend: UI responsive, botones y topbar |
 | plopez-l | Frontend: estructura del repositorio, diseño e interfaz |
 
 ## El dolor
